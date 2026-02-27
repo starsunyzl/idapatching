@@ -1,6 +1,8 @@
 name: Package IDA Plugin 📦
 
-on: push
+on:
+  push:
+  workflow_dispatch:
 
 jobs:
   package:
