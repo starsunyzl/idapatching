@@ -24,14 +24,14 @@ class SaveDialog(QtWidgets.QDialog):
 
         # remove auxillary buttons (such as '?') from window title bar
         remove_flags = ~(
-            QtCore.Qt.WindowSystemMenuHint |
-            QtCore.Qt.WindowContextHelpButtonHint
+            QtCore.Qt.WindowType.WindowSystemMenuHint |
+            QtCore.Qt.WindowType.WindowContextHelpButtonHint
         )
         self.setWindowFlags(self.windowFlags() & remove_flags)
-        self.setSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Expanding)
+        self.setSizePolicy(QtWidgets.QSizePolicy.Policy.Expanding, QtWidgets.QSizePolicy.Policy.Expanding)
 
         # make dialog fixed size (no size grip, etc)
-        #self.setWindowFlags(self.windowFlags() | QtCore.Qt.MSWindowsFixedSizeDialogHint)
+        #self.setWindowFlags(self.windowFlags() | QtCore.Qt.WindowType.MSWindowsFixedSizeDialogHint)
         #self.setSizeGripEnabled(False)
 
         # make dialog modal, so users can't click around IDA / change more stuff
@@ -55,7 +55,7 @@ class SaveDialog(QtWidgets.QDialog):
         Initialize the interactive text fields for this UI control.
         """
         self._label_target = QtWidgets.QLabel("Patch Target:")
-        self._label_target.setAlignment(QtCore.Qt.AlignRight | QtCore.Qt.AlignVCenter)
+        self._label_target.setAlignment(QtCore.Qt.AlignmentFlag.AlignRight | QtCore.Qt.AlignmentFlag.AlignVCenter)
         self._line_target = QtWidgets.QLineEdit()
         self._line_target.setText(self.controller.target_filepath)
         self._line_target.setMinimumWidth(360)
@@ -64,7 +64,7 @@ class SaveDialog(QtWidgets.QDialog):
         # warning / status message
         self._label_status = QtWidgets.QLabel()
         self._label_status.setWordWrap(True)
-        self._label_status.setAlignment(QtCore.Qt.AlignTop | QtCore.Qt.AlignHCenter)
+        self._label_status.setAlignment(QtCore.Qt.AlignmentFlag.AlignTop | QtCore.Qt.AlignmentFlag.AlignHCenter)
         self._refresh_status_message()
 
         # apply patches button

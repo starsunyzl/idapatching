@@ -65,13 +65,13 @@ class PatchingDockable(ida_kernwin.PluginForm):
         self.widget.setMinimumSize(350, 350)
 
         # setup a monospace font for code / text printing
-        font_name = ida_registry.reg_read_string("Name", "Font\Disassembly", "Consolas")
-        font_size = ida_registry.reg_read_int("Size", 10, "Font\Disassembly")
-        font_bold = ida_registry.reg_read_int("Bold", 0, "Font\Disassembly")
+        font_name = ida_registry.reg_read_string("Name", r"Font\Disassembly", "Consolas")
+        font_size = ida_registry.reg_read_int("Size", 10, r"Font\Disassembly")
+        font_bold = ida_registry.reg_read_int("Bold", 0, r"Font\Disassembly")
         self._font = QtGui.QFont(font_name)
         self._font.setPointSize(font_size)
         self._font.setBold(True if font_bold else False)
-        self._font.setStyleHint(QtGui.QFont.Monospace)
+        self._font.setStyleHint(QtGui.QFont.StyleHint.Monospace)
 
         # initialize our ui elements
         self._ui_init_code()
@@ -113,21 +113,21 @@ class PatchingDockable(ida_kernwin.PluginForm):
         self._line_address.setFont(self._font)
         self._line_address.setReadOnly(True)
         self._label_address = QtWidgets.QLabel("Address:")
-        self._label_address.setAlignment(QtCore.Qt.AlignRight | QtCore.Qt.AlignVCenter)
+        self._label_address.setAlignment(QtCore.Qt.AlignmentFlag.AlignRight | QtCore.Qt.AlignmentFlag.AlignVCenter)
 
         # configure the line that displays assembly text
         self._line_assembly = AsmLineEdit(self._code_view)
         self._line_assembly.setFont(self._font)
         self._line_assembly.setMinimumWidth(350)
         self._label_assembly = QtWidgets.QLabel("Assembly:")
-        self._label_assembly.setAlignment(QtCore.Qt.AlignRight | QtCore.Qt.AlignVCenter)
+        self._label_assembly.setAlignment(QtCore.Qt.AlignmentFlag.AlignRight | QtCore.Qt.AlignmentFlag.AlignVCenter)
 
         # configure the line that displays assembled bytes
         self._line_bytes = QtWidgets.QLineEdit()
         self._line_bytes.setFont(self._font)
         self._line_bytes.setReadOnly(True)
         self._label_bytes = QtWidgets.QLabel("Bytes:")
-        self._label_bytes.setAlignment(QtCore.Qt.AlignRight | QtCore.Qt.AlignVCenter)
+        self._label_bytes.setAlignment(QtCore.Qt.AlignmentFlag.AlignRight | QtCore.Qt.AlignmentFlag.AlignVCenter)
 
     def _ui_init_code(self):
         """
@@ -427,7 +427,7 @@ class AsmLineEdit(QtWidgets.QLineEdit):
         """
 
         # navigate DOWN one line in the asm view if the 'down arrow' key
-        if event.key() == QtCore.Qt.Key_Down:
+        if event.key() == QtCore.Qt.Key.Key_Down:
             lineno, x, y = self.code_view.GetPos()
 
             # clamp to the last line, and jump to it
@@ -442,7 +442,7 @@ class AsmLineEdit(QtWidgets.QLineEdit):
             return
 
         # navigate UP one line in the code view if the 'up arrow' key
-        elif event.key() == QtCore.Qt.Key_Up:
+        elif event.key() == QtCore.Qt.Key.Key_Up:
             lineno, x, y = self.code_view.GetPos()
 
             # clamp to the first line
