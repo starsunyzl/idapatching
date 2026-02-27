@@ -29,9 +29,9 @@ jobs:
       shell: bash
       run: |
         mkdir dist && cd dist
-        mkdir win32 && cp -r ../plugins/* ./win32/ && cp -r ../artifact_windows-latest/keystone_win32/* ./win32/patching/keystone && cd ./win32 && zip -r ../patching_win32.zip ./* && cd ..
-        mkdir linux && cp -r ../plugins/* ./linux/ && cp -r ../artifact_ubuntu-latest/keystone_linux/* ./linux/patching/keystone && cd ./linux && zip -r ../patching_linux.zip ./* && cd ..
-        mkdir darwin && cp -r ../plugins/* ./darwin/ && cp -r ../artifact_macos-latest/keystone_darwin/* ./darwin/patching/keystone && cd ./darwin && zip -r ../patching_macos.zip ./* && cd ..
+        mkdir -p win32/Patching && cp -r ../plugins/* ./win32/Patching/ && cp -r ../artifact_windows-latest/keystone_win32/* ./win32/Patching/patching/keystone && cd ./win32 && zip -r ../patching-windows-x64.zip ./* && cd ..
+        mkdir -p linux/Patching && cp -r ../plugins/* ./linux/Patching/ && cp -r ../artifact_ubuntu-latest/keystone_linux/* ./linux/Patching/patching/keystone && cd ./linux && zip -r ../patching-linux-x64.zip ./* && cd ..
+        mkdir -p darwin/Patching && cp -r ../plugins/* ./darwin/Patching/ && cp -r ../artifact_macos-latest/keystone_darwin/* ./darwin/Patching/patching/keystone && cd ./darwin && zip -r ../patching-macos-universal.zip ./* && cd ..
 
     - uses: actions/upload-artifact@v7
       with:
