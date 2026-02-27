@@ -1,0 +1,21 @@
+{
+  "IDAMetadataDescriptorVersion": 1,
+  "plugin": {
+    "name": "Patching",
+    "version": "0.3.0",
+    "entryPoint": "patching.py",
+    "idaVersions": ">=9.2",
+    "description": "Interactive Binary Patching for IDA Pro",
+    "urls": {
+      "repository": "https://github.com/starsunyzl/idapatching"
+    },
+    "authors": [{
+      "name": "Markus Gaasedelen",
+      "email": "your@example.com"
+    }],
+    "maintainers": [{
+      "name": "Zhang Li",
+      "email": "starsunyzl@gmail.com"
+    }]
+  }
+}
