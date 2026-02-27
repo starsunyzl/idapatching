@@ -6,18 +6,18 @@ jobs:
   package:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v4
+    - uses: actions/checkout@v6
 
     - name: Download workflow artifact
-      uses: dawidd6/action-download-artifact@v6
+      uses: dawidd6/action-download-artifact@v16
       with:
 
         # the target repo for external artifacts (built libs)
-        repo: gaasedelen/keystone
+        repo: starsunyzl/keystone
         branch: master
 
         # token to fetch artifacts from the repo
-        github_token: ${{secrets.KEYSTONE_PATCHING_TOKEN}}
+        github_token: ${{secrets.KEYSTONE_TOKEN}}
 
         # which workflow to search for artifacts
         workflow: python-publish.yml
@@ -31,6 +31,6 @@ jobs:
         mkdir linux && cp -r ../plugins/* ./linux/ && cp -r ../artifact_ubuntu-latest/* ./linux/patching/keystone && cd ./linux && zip -r ../patching_linux.zip ./* && cd ..
         mkdir darwin && cp -r ../plugins/* ./darwin/ && cp -r ../artifact_macos-latest/* ./darwin/patching/keystone && cd ./darwin && zip -r ../patching_macos.zip ./* && cd ..
 
-    - uses: actions/upload-artifact@v4
+    - uses: actions/upload-artifact@v7
       with:
          path: ${{ github.workspace }}/dist/*.zip
