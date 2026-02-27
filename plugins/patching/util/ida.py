@@ -893,7 +893,7 @@ def remove_ida_actions(popup):
 
     class FilterMenu(QtCore.QObject):
         def __init__(self, qmenu):
-            super(QtCore.QObject, self).__init__()
+            super(FilterMenu, self).__init__()
             self.qmenu = qmenu
 
         def eventFilter(self, obj, event):
