@@ -19,7 +19,7 @@ jobs:
         branch: master
 
         # token to fetch artifacts from the repo
-        github_token: ${{secrets.KEYSTONE_TOKEN}}
+        github_token: ${{secrets.GITHUB_TOKEN}}
 
         # which workflow to search for artifacts
         workflow: python-publish.yml
