@@ -6,20 +6,19 @@
 
 Patching assembly code to change the behavior of an existing program is not uncommon in malware analysis, software reverse engineering, and broader domains of security research. This project extends the popular [IDA Pro](https://www.hex-rays.com/products/ida/) disassembler to create a more robust interactive binary patching workflow designed for rapid iteration.
 
-This project is currently powered by a minor [fork](https://github.com/gaasedelen/keystone) of the ubiquitous [Keystone Engine](https://github.com/keystone-engine/keystone), supporting x86/x64 and Arm/Arm64 patching with plans to enable the remaining Keystone architectures in a future release.
+This project is currently powered by a minor [fork](https://github.com/starsunyzl/keystone) of the ubiquitous [Keystone Engine](https://github.com/keystone-engine/keystone), supporting x86/x64 and Arm/Arm64 patching with plans to enable the remaining Keystone architectures in a future release.
 
 Special thanks to [Hex-Rays](https://hex-rays.com/) for supporting the development of this plugin.
 
 ## Releases
 
+* v0.3 -- Supports IDA >= 9.2 only
 * v0.2 -- Important bugfixes, IDA 9 compatibility
 * v0.1 -- Initial release
 
 # Installation
 
-This plugin requires IDA 7.6 and Python 3. It supports Windows, Linux, and macOS.
-
-*Please note, older versions of IDA (8.2 and below) are [not compatible](https://hex-rays.com/products/ida/news/8_2sp1/) with Python 3.11 and above.*
+This plugin requires IDA 9.2 and Python 3. It supports Windows, Linux, and macOS.
 
 ## Easy Install
 
@@ -28,18 +27,18 @@ Run the following line in the IDA console to automatically install the plugin:
 ### Windows / Linux
 
 ```python
-import urllib.request as r; exec(r.urlopen('https://github.com/gaasedelen/patching/raw/main/install.py').read())
+import urllib.request as r; exec(r.urlopen('https://github.com/starsunyzl/idapatching/raw/main/install.py').read())
 ```
 
 ### macOS
 
 ```python
-import urllib.request as r; exec(r.urlopen('https://github.com/gaasedelen/patching/raw/main/install.py', cafile='/etc/ssl/cert.pem').read())
+import urllib.request as r; exec(r.urlopen('https://github.com/starsunyzl/idapatching/raw/main/install.py', cafile='/etc/ssl/cert.pem').read())
 ```
 
 ## Manual Install
 
-Alternatively, the plugin can be manually installed by downloading the distributable plugin package for your respective platform from the [releases](https://github.com/gaasedelen/patching/releases) page and unzipping it to your plugins folder.
+Alternatively, the plugin can be manually installed by downloading the distributable plugin package for your respective platform from the [releases](https://github.com/starsunyzl/idapatching/releases) page and unzipping it to your plugins folder.
 
 It is __*strongly*__ recommended you install this plugin into IDA's user plugin directory:
 
@@ -134,3 +133,7 @@ I welcome external contributions, issues, and feature requests. Please make any 
 # Authors
 
 * Markus Gaasedelen ([@gaasedelen](https://twitter.com/gaasedelen))
+
+# Maintainers
+
+* starsunyzl
