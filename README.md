@@ -20,7 +20,7 @@ Special thanks to [Hex-Rays](https://hex-rays.com/) for supporting the developme
 
 This plugin requires IDA 9.2 and Python 3. It supports Windows, Linux, and macOS.
 
-## Easy Install
+## Easy Install(No longer working)
 
 Run the following line in the IDA console to automatically install the plugin:
 

@@ -16,31 +16,15 @@ try:
 except:
     SUPPORTED_PYTHON = False
 
-# this plugin requires IDA 7.6 or newer
+# this plugin requires IDA 9.2 or newer
 try:
     import ida_pro
     import ida_diskio
     import ida_loader
     IDA_GLOBAL_SCOPE = sys.modules['__main__']
-    SUPPORTED_IDA = ida_pro.IDA_SDK_VERSION >= 760
+    SUPPORTED_IDA = ida_pro.IDA_SDK_VERSION >= 920
 except:
     SUPPORTED_IDA = False
-
-#
-# XXX/NOTE: older versions of IDA have compatability issues with newer
-# versions of Python. if the user is running IDA 8.2 or below and Python 3.11
-# or above, we will not proceed with installation.
-#
-#   https://hex-rays.com/products/ida/news/8_2sp1/
-#   https://github.com/gaasedelen/patching/issues/10
-#   https://github.com/gaasedelen/patching/issues/16
-#   ...
-#
-
-if SUPPORTED_IDA and ida_pro.IDA_SDK_VERSION < 830:
-    SUPPORTED_PYTHON = sys.version_info[0] == 3 and sys.version_info[1] < 11
-    if not SUPPORTED_PYTHON:
-        print("[i] IDA 8.2 and below do not support Python 3.11 and above")
 
 # is this deemed to be a compatible environment for the plugin to load?
 SUPPORTED_ENVIRONMENT = bool(SUPPORTED_IDA and SUPPORTED_PYTHON)
@@ -50,7 +34,7 @@ SUPPORTED_ENVIRONMENT = bool(SUPPORTED_IDA and SUPPORTED_PYTHON)
 #------------------------------------------------------------------------------
 
 PLUGIN_NAME = 'Patching'
-PLUGIN_URL = 'https://api.github.com/repos/gaasedelen/patching/releases/latest'
+PLUGIN_URL = 'https://api.github.com/repos/starsunyzl/idapatching/releases/latest'
 
 def install_plugin():
     """
